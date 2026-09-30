@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include "RingBuffer.h"
 
 RingBuffer::RingBuffer()
@@ -24,21 +24,18 @@ RingBuffer::~RingBuffer()
 
 void RingBuffer::ReSize(int size)
 {
-
     int useSize = GetUseSize();
     char* newBuffer = (char*)malloc(size);
     char* newEnd = newBuffer + size;
 
-
     Peek(newBuffer, useSize);
-
 
     free(begin);
 
     begin = newBuffer;
     end = newEnd;
     ringBufferSize = size;
-    readpointer = begin; // �����Ͱ� ������ ���ĵǾ����Ƿ� 0���� ����
+    readpointer = begin;
     writepointer = begin + useSize;
 }
 
@@ -89,7 +86,6 @@ int RingBuffer::Enqueue(const char* chpData, int size)
     int freeSize = GetFreeSize();
     int enqueueSize;
 
-    // if-else ������ ����Ͽ� ���� Enqueue�� ũ�� ����
     if (size < freeSize)
     {
         enqueueSize = size;
@@ -123,7 +119,6 @@ int RingBuffer::Dequeue(char* chpDest, int size)
     int useSize = GetUseSize();
     int dequeueSize;
 
-    // if-else ������ ����Ͽ� ���� Dequeue�� ũ�� ����
     if (size < useSize)
     {
         dequeueSize = size;
@@ -157,7 +152,6 @@ int RingBuffer::Peek(char* chpDest, int size)
     int useSize = GetUseSize();
     int peekSize;
 
-    // if-else ������ ����Ͽ� ���� Peek�� ũ�� ����
     if (size < useSize)
     {
         peekSize = size;

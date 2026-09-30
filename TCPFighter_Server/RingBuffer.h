@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <iostream>
 class RingBuffer
 {
@@ -31,7 +31,7 @@ public:
 private:
     char* readpointer;
     char* writepointer;
-    //데이터는 readpointer에서 writepointer 방향으로 저장
+    // 데이터는 readpointer부터 writepointer 직전까지
     char* begin;
     char* end;
     int ringBufferSize;
